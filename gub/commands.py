@@ -341,7 +341,7 @@ class PackageGlobs (SerializedCommand):
             globs.append ('no-globs-for-%(dest)s' % locals ())
 
         _v = logger.verbose_flag ()
-        cmd = 'tar -C %(root)s/%(suffix_dir)s --ignore-failed --exclude="*~"%(_v)s -zcf %(dest)s ' % locals ()
+        cmd = 'tar -C %(root)s/%(suffix_dir)s --exclude="*~"%(_v)s -zcf %(dest)s ' % locals ()
         cmd += ' '.join (globs)
         loggedos.system (logger, cmd)
 
