@@ -1,12 +1,8 @@
-import re
-
 from gub import build_platform
 from gub import tools
 
-# And this is supposed to be one of the most compiled packages?
-# So why doesn't anyone fix configuring/compiling it?  Shees.
-class Perl__tools (tools.AutoBuild):
-    source = 'http://www.cpan.org/src/5.0/perl-5.10.0.tar.gz'
+class Perl__tools(tools.AutoBuild):
+    source = 'https://www.cpan.org/src/5.0/perl-5.28.1.tar.gz'
     srcdir_build_broken = True
     configure_binary = '%(autodir)s/configure.gnu'
 
@@ -26,20 +22,20 @@ class Perl__tools (tools.AutoBuild):
         '-Dlibpth=%(system_prefix)s/lib',
         '-Dlocallibpth=/',
         '-Dprefix=%(system_prefix)s',
-        '-Dsitearch=%(system_prefix)s/lib/perl5/5.10.0',
-        '-Dsitelib=%(system_prefix)s/lib/perl5/5.10.0',
+        '-Dsitearch=%(system_prefix)s/lib/perl5/5.28.1',
+        '-Dsitelib=%(system_prefix)s/lib/perl5/5.28.1',
         '-Dtargetarch=%(target_architecture)s',
         '-Dusedl',
         '-Duseshrplib',
         '-Dusrinc=%(system_prefix)s/include',
     ])
 
-    def patch (self):
-        tools.AutoBuild.patch (self)
-        self.file_sub ([('-c (/dev/null)', r'-e \1')], '%(srcdir)s/Configure')
+    def patch(self):
+        tools.AutoBuild.patch(self)
+        self.file_sub([('-c (/dev/null)', r'-e \1')], '%(srcdir)s/Configure')
 
-    def configure (self):
-        tools.AutoBuild.configure (self)
+    def configure(self):
+        tools.AutoBuild.configure(self)
         for i in ['%(builddir)s/makefile', '%(builddir)s/x2p/makefile']:
             # Ugh, missing some command?
-            self.file_sub ([('^0$','')], i)
+            self.file_sub([('^0$','')], i)

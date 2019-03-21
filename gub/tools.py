@@ -169,8 +169,8 @@ LD_LIBRARY_PATH=%(system_prefix)s/lib
 #            'LIBRESTRICT_IGNORE': '%(system_prefix)s/bin/make:%(system_prefix)s/gcc:%(system_prefix)s/g++:%(system_prefix)s/ld', #etc.
             + misc.append_path (os.environ.get ('LIBRARY_PATH', '')),
             'PATH': '%(system_prefix)s/bin:%(system_cross_prefix)s/bin:' + os.environ['PATH'],
-            'PERL5LIB': 'foo:%(tools_prefix)s/lib/perl5/5.10.0'
-            + ':%(tools_prefix)s/lib/perl5/5.10.0/%(build_architecture)s'
+            'PERL5LIB': 'foo:%(tools_prefix)s/lib/perl5/5.28.1'
+            + ':%(tools_prefix)s/lib/perl5/5.28.1/%(build_architecture)s'
             + ':%(tools_prefix)s/share/autoconf'
             + misc.append_path (os.environ.get ('PERL5LIB', '')),
         }

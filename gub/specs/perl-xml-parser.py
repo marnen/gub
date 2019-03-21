@@ -1,5 +1,7 @@
 from gub import tools
 
 class Perl_xml_parser (tools.CpanBuild):
-    source = 'http://search.cpan.org/CPAN/authors/id/M/MS/MSERGEANT/XML-Parser-2.36.tar.gz'
-    dependencies = ['expat']
+    source = 'https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.44.tar.gz'
+    dependencies = [
+        'expat',
+    ]
