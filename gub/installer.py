@@ -472,6 +472,7 @@ def get_installer (settings, *arguments):
         
         'darwin-ppc' : DarwinBundle,
         'darwin-x86' : DarwinBundle,
+        'darwin-64' : DarwinBundle,
         'freebsd-x86' : Shar,
         'freebsd4-x86' : Shar,
         'freebsd6-x86' : Shar,
