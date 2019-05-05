@@ -6,6 +6,7 @@ import re
 import sys
 import traceback
 #
+from gub import build_platform
 from gub import loggedos
 from gub import misc
 from gub import octal
@@ -341,9 +342,23 @@ class PackageGlobs (SerializedCommand):
             globs.append ('no-globs-for-%(dest)s' % locals ())
 
         _v = logger.verbose_flag ()
-        cmd = 'tar -C %(root)s/%(suffix_dir)s --exclude="*~"%(_v)s -zcf %(dest)s ' % locals ()
-        cmd += ' '.join (globs)
-        loggedos.system (logger, cmd)
+
+        tar_flags = [
+            '--exclude="*~"%(_v)s',
+            '-C %(root)s/%(suffix_dir)s',
+            '-c',
+            '-f %(dest)s',
+            '-z',
+        ]
+
+        # '--ignore-failed' is required to build binutils on GNU/Linux systems.
+        # Default tar on Darwin is BSD, which does not have '--ignore-failed'.
+        if 'darwin' not in build_platform.machine():
+            tar_flags.append('--ignore-failed')
+
+        tar_cmd = ' '.join(['tar'] + tar_flags + globs) % locals ()
+
+        loggedos.system (logger, tar_cmd)
 
 # FIXME
 class ForcedAutogenMagic (SerializedCommand):
