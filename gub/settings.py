@@ -19,7 +19,7 @@ platforms = {
     'cygwin': 'i686-cygwin',
     'darwin-ppc': 'powerpc-apple-darwin8',
     'darwin-x86': 'i686-apple-darwin8',
-    'darwin-64': 'x86_64-apple-darwin8',
+    'darwin-64': 'x86_64-apple-darwin',
 
     'freebsd4-x86': 'i686-freebsd4',
     'freebsd6-x86': 'i686-freebsd6',

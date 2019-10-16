@@ -207,12 +207,14 @@ lt_cv_sys_max_cmd_len=${lt_cv_sys_max_cmd_len=8192}
 
 config_cache['linux-64'] = config_cache['linux-x86']
 config_cache['freebsd-64'] = config_cache['freebsd-x86']
+config_cache['darwin-64'] = config_cache['darwin-x86']
 
 config_cache['arm'] += config_cache['32']
 config_cache['cygwin'] += config_cache['32']
 config_cache['darwin-ppc'] += config_cache['32']
 config_cache['darwin-64'] = config_cache['darwin-x86'] + config_cache['64']
 config_cache['darwin-x86'] += config_cache['32']
+config_cache['darwin-64'] += config_cache['64']
 config_cache['freebsd-64'] += config_cache['64']
 config_cache['freebsd-x86'] += config_cache['32']
 config_cache['linux-64'] += config_cache['64']
