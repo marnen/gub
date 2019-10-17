@@ -6,10 +6,13 @@ class Perl__tools(tools.AutoBuild):
     srcdir_build_broken = True
     configure_binary = '%(autodir)s/configure.gnu'
 
+
     if 'darwin' in build_platform.machine():
         librt_flag = '-lSystem'
+        target_arch_flag = '' # TODO: fix for cross-compilation
     else:
         librt_flag = '-lrt'
+        target_arch_flag = '-Dtargetarch=%(target_architecture)s'
 
     configure_command = ' '.join([
         '%(configure_binary)s',
@@ -24,7 +27,7 @@ class Perl__tools(tools.AutoBuild):
         '-Dprefix=%(system_prefix)s',
         '-Dsitearch=%(system_prefix)s/lib/perl5/5.28.1',
         '-Dsitelib=%(system_prefix)s/lib/perl5/5.28.1',
-        '-Dtargetarch=%(target_architecture)s',
+        target_arch_flag,
         '-Dusedl',
         '-Duseshrplib',
         '-Dusrinc=%(system_prefix)s/include',
