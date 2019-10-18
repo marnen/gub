@@ -39,6 +39,7 @@ class Perl__tools(tools.AutoBuild):
 
     def configure(self):
         tools.AutoBuild.configure(self)
-        for i in ['%(builddir)s/makefile', '%(builddir)s/x2p/makefile']:
-            # Ugh, missing some command?
-            self.file_sub([('^0$','')], i)
+        if 'darwin' not in build_platform.machine():
+            for i in ['%(builddir)s/makefile', '%(builddir)s/x2p/makefile']:
+                # Ugh, missing some command?
+                self.file_sub([('^0$','')], i)
