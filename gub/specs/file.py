@@ -1,3 +1,4 @@
+from gub import build_platform
 from gub import tools
 import os
 
@@ -7,3 +8,6 @@ class File__tools (tools.AutoBuild):
             'libtool',
             'zlib',
             ]
+
+    if 'darwin' in build_platform.machine():
+        compile_command = 'DYLD_LIBRARY_PATH="%(system_prefix)s/lib" ' + tools.AutoBuild.compile_command
